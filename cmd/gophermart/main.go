@@ -65,7 +65,7 @@ func main() {
 	r.HandleFunc("/api/user/withdrawals", user.GetWithdrawalsHandler).Methods("GET")
 	r.HandleFunc("/api/orders/{number}", user.GetOrderAccrualHandler).Methods("GET")
 	fmt.Println("Server is listening on port ", runAddress)
-	err := http.ListenAndServe(":8081", nil)
+	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		fmt.Println("Ошибка при запуске сервера:", err)
 	}
