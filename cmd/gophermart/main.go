@@ -52,7 +52,7 @@ func main() {
 	if err := database.CreateWithdrawalTableIfNotExists(); err != nil {
 		panic(err)
 	}
-
+//cxc
 	r := mux.NewRouter()
 	http.Handle("/", r)
 	r.HandleFunc("/api/user/register", user.RegisterUserHandler).Methods("POST")
