@@ -6,7 +6,7 @@ import (
 	"errors"
 	"fmt"
 
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strconv"
 	"time"
@@ -37,20 +37,17 @@ func RegisterUserHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Проверка, что логин уникален
 	if isLoginTaken(user.Login) {
 		http.Error(w, "Login already taken", http.StatusConflict)
 		return
 	}
 
-	// Хеширование пароля
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 	if err != nil {
 		http.Error(w, "Internal server error", http.StatusInternalServerError)
 		return
 	}
 
-	// Вставка пользователя в базу данных
 	session, err := database.GetSession()
 	if err != nil {
 		panic(err)
@@ -161,7 +158,7 @@ func UploadOrderHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	body, err := ioutil.ReadAll(r.Body)
+	body, err := io.ReadAll(r.Body)
 	if err != nil {
 		http.Error(w, "Failed to read request body", http.StatusBadRequest)
 		return
