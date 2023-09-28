@@ -13,7 +13,7 @@ import (
 
 func main() {
 	var (
-		runAddressFlag           = flag.String("a", "127.0.0.1:8080", "Address and port to run the service")
+		runAddressFlag           = flag.String("a", "localhost:8080", "Address and port to run the service")
 		databaseURIFlag          = flag.String("d", "user=postgres password=490Sutud dbname=gofermartUsers sslmode=disable", "Database connection URI")
 		accrualSystemAddressFlag = flag.String("r", "", "Address of the accrual system")
 	)
@@ -35,7 +35,7 @@ func main() {
 
 	viper.SetDefault("run_address", ":8080")
 	viper.SetDefault("database_uri", "postgres://postres:490Sutud@localhost:5432/gofermartUsers")
-	viper.SetDefault("accrual_system_address", "http://127.0.0.1:8000")
+	viper.SetDefault("accrual_system_address", "localhost:8080")
 
 	runAddress := viper.GetString("run_address")
 	databaseURI := viper.GetString("database_uri")
@@ -65,7 +65,7 @@ func main() {
 	r.HandleFunc("/api/user/withdrawals", user.GetWithdrawalsHandler).Methods("GET")
 	r.HandleFunc("/api/orders/{number}", user.GetOrderAccrualHandler).Methods("GET")
 	fmt.Println("Server is listening on port ", runAddress)
-	err := http.ListenAndServe(runAddress, nil)
+	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		fmt.Println("Ошибка при запуске сервера:", err)
 	}
