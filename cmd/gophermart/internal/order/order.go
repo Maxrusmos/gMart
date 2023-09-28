@@ -7,7 +7,7 @@ import (
 
 	"time"
 
-	"gMart/cmd/gophermart/internal/database"
+	"github.com/Maxrusmos/gMart/cmd/gophermart/internal/database"
 )
 
 var ErrInvalidOrderNumber = errors.New("invalid order number format")

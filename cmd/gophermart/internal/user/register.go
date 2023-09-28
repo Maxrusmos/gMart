@@ -2,7 +2,9 @@ package user
 
 import (
 	"encoding/json"
-	"gMart/cmd/gophermart/internal/database"
+
+	"github.com/Maxrusmos/gMart/cmd/gophermart/internal/database"
+
 	"net/http"
 	"strconv"
 	"time"

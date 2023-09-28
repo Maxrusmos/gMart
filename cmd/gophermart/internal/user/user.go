@@ -6,14 +6,14 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/Maxrusmos/gMart/cmd/gophermart/internal/database"
+
 	"io"
 	"net/http"
 	"strconv"
 	"time"
 
-	"gMart/cmd/gophermart/internal/database"
-	"gMart/cmd/gophermart/internal/order"
-
+	"github.com/Maxrusmos/gMart/cmd/gophermart/internal/order"
 	"github.com/gorilla/mux"
 	"golang.org/x/crypto/bcrypt"
 )
