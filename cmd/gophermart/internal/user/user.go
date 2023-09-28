@@ -368,6 +368,10 @@ func GetWithdrawalsHandler(w http.ResponseWriter, r *http.Request) {
 		withdrawals = append(withdrawals, withdrawal)
 	}
 
+	if err := rows.Err(); err != nil {
+		panic(err)
+	}
+
 	if len(withdrawals) == 0 {
 		w.WriteHeader(http.StatusNoContent)
 		return
