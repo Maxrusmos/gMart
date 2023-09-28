@@ -10,8 +10,8 @@ import (
 	"gMart/cmd/gophermart/internal/database"
 )
 
-var ErrInvalidOrderNumber = errors.New("Invalid order number format")
-var ErrOrderAlreadyUploaded = errors.New("Order already uploaded by this user")
+var ErrInvalidOrderNumber = errors.New("invalid order number format")
+var ErrOrderAlreadyUploaded = errors.New("order already uploaded by this user")
 
 type Order struct {
 	ID          int
@@ -101,6 +101,9 @@ type OrderResponse struct {
 
 func GetUserOrders(userID int) ([]OrderResponse, error) {
 	db, err := sql.Open("postgres", "user=postgres password=490Sutud dbname=gofermartUsers sslmode=disable")
+	if err != nil {
+		panic(err)
+	}
 	query := "SELECT order_number, status, accrual, uploaded_at FROM orders WHERE user_id = $1 ORDER BY uploaded_at ASC"
 	rows, err := db.Query(query, userID)
 	if err != nil {
@@ -116,6 +119,10 @@ func GetUserOrders(userID int) ([]OrderResponse, error) {
 			return nil, err
 		}
 		orders = append(orders, order)
+	}
+
+	if err := rows.Err(); err != nil {
+		panic(err)
 	}
 
 	return orders, nil
