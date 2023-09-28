@@ -37,7 +37,7 @@ func main() {
 	viper.SetDefault("database_uri", "postgres://postres:490Sutud@localhost:5432/gofermartUsers")
 	viper.SetDefault("accrual_system_address", "http://localhost:8000")
 
-	runAddress := viper.GetString("run_address")
+	// runAddress := viper.GetString("run_address")
 	databaseURI := viper.GetString("database_uri")
 	// accrualSystemAddress := viper.GetString("accrual_system_address")
 
@@ -68,5 +68,5 @@ func main() {
 	http.Handle("/", r)
 
 	fmt.Println("Server is listening on port 8080...")
-	http.ListenAndServe(runAddress, nil)
+	http.ListenAndServe(":8080", nil)
 }
