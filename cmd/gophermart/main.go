@@ -3,11 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"gMart/gMart/cmd/gophermart/internal/database"
+	"gMart/cmd/gophermart/internal/database"
+	"gMart/cmd/gophermart/internal/user"
 	"net/http"
-
-	// "gMart/cmd/gophermart/database"
-	"gMart/gMart/cmd/gophermart/internal/user"
 
 	"github.com/gorilla/mux"
 	"github.com/spf13/viper"
