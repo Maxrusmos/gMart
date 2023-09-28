@@ -11,8 +11,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/Maxrusmos/gMart/gMart/cmd/gophermart/database"
-	"github.com/Maxrusmos/gMart/gMart/cmd/gophermart/order"
+	"gMart/gMart/cmd/gophermart/internal/database"
+	"gMart/gMart/cmd/gophermart/internal/order"
+
 	"github.com/gorilla/mux"
 	"golang.org/x/crypto/bcrypt"
 )

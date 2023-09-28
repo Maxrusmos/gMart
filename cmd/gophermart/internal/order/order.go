@@ -1,5 +1,3 @@
-// order/order.go
-
 package order
 
 import (
@@ -9,7 +7,7 @@ import (
 
 	"time"
 
-	"github.com/Maxrusmos/gMart/gMart/cmd/gophermart/database"
+	"gMart/gMart/cmd/gophermart/internal/database"
 )
 
 var ErrInvalidOrderNumber = errors.New("Invalid order number format")
